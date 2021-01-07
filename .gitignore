@@ -1,1 +1,4 @@
 node_modules
+dotnet
+bin
+BugTrap-x64.dll
