@@ -3,4 +3,6 @@ packages
 client_packages
 dotnet
 bin
+
 BugTrap-x64.dll
+ragemp-server.exe
