@@ -1,5 +1,5 @@
 import Components from "./pages/Components";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 function App() {
   return (
     <div className="App container">
