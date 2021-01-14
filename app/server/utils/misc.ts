@@ -1,4 +1,4 @@
-const findPlayer = (target: string): PlayerMp | PlayerMp[] | undefined => {
+export const findPlayer = (target: string): PlayerMp | PlayerMp[] | undefined => {
     if(!isNaN(+target)) return mp.players.at(+target);
 
     let found = 0;
