@@ -7,7 +7,7 @@ router.get("/all", (req, res, next) => {
     if (error) {
       return res.status(500).send({ error: error });
     }
-    conn.query("SELECT * FROM user", (error, resultado, fields) => {
+    conn.query("SELECT user_id,user_nickname,user_email,user_firstname,user_lastname,user_adminlevel FROM user", (error, resultado, fields) => {
       conn.release(); //MUITO IMPORTANTE
       if (error) {
         return res.status(500).send({ error: error });
