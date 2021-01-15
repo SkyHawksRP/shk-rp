@@ -45,7 +45,7 @@ const banCommand = (player: PlayerMp, fullText: string, target: string, ...args:
 mp.events.addCommand('ban', banCommand);
 
 const createCarCommmand = (player: PlayerMp, fullText: string, vehicle: string) => {
-    if(!fullText) return player.outputChatBox(`${COLOR.INFO}* /veh [vehicleid or vehiclename] `);
+    if(!fullText) return player.outputChatBox(`${COLOR.INFO}* /veh [vehiclename] `);
 
     if(player.adminLevel < USER_ADMIN) player.outputChatBox(`!${COLOR.ERROR}* Você não tem permissão.`);
     else {
