@@ -61,3 +61,11 @@ const createCarCommmand = (player: PlayerMp, fullText: string, vehicle: string) 
     hasCar = true;
 }
 mp.events.addCommand('veh', createCarCommmand);
+
+const timerAdminVehicle = () => {
+    setTimeout(function(){
+        adminVeh.destroy();
+        hasCar = false;
+    },30000);
+}
+mp.events.add('playerExitVehicle', timerAdminVehicle);
