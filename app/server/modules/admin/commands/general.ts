@@ -1,6 +1,7 @@
 import { COLOR } from '../../../consts/colors';
 import { findPlayer } from '../../../utils/misc';
 import { USER_DEV, USER_ADMIN, USER_MOD } from '../../../consts/player';
+import { hasUncaughtExceptionCaptureCallback } from 'process';
 
 const kickCommand = (player: PlayerMp, fullText: string, target: string, ...args: Array<string>) => {
     if(!fullText || target) return player.outputChatBox(`${COLOR.INFO}* /kick [playerid] [motivo]`);
@@ -44,17 +45,19 @@ const banCommand = (player: PlayerMp, fullText: string, target: string, ...args:
 }
 mp.events.addCommand('ban', banCommand);
 
+// Create vehicle
+let adminVeh: VehicleMp;
+let hasCar: boolean = false;
 const createCarCommmand = (player: PlayerMp, fullText: string, vehicle: string) => {
     if(!fullText) return player.outputChatBox(`${COLOR.INFO}* /veh [vehiclename] `);
-
-    if(player.adminLevel < USER_ADMIN) player.outputChatBox(`!${COLOR.ERROR}* Você não tem permissão.`);
-    else {
-        const veh = mp.vehicles.new(mp.joaat(vehicle), player.position, {
-            numberPlate: "ADMIN",
-            color: [[2, 36, 255], [255, 255, 255]], // tribute for David Silva (SkyHawks Forever)
-            dimension: player.dimension
-        });
-        player.putIntoVehicle(veh, -1);
-    }
+    if(player.adminLevel < USER_ADMIN) return player.outputChatBox(`!${COLOR.ERROR}* Você não tem permissão.`);
+    if(hasCar == true) adminVeh.destroy();
+    adminVeh = mp.vehicles.new(mp.joaat(vehicle), player.position, {
+        numberPlate: "ADMIN",
+        color: [[2, 36, 255], [255, 255, 255]], // tribute for David Silva (SkyHawks Forever)
+        dimension: player.dimension
+    });
+    player.putIntoVehicle(adminVeh, 0);
+    hasCar = true;
 }
 mp.events.addCommand('veh', createCarCommmand);

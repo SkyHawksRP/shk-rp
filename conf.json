@@ -1,5 +1,6 @@
 {
 	"maxplayers" : 100,
+	"bind": "192.168.0.45",
 	"name" : "BRASIL • SKY HAWKS ROLEPLAY • [1.0]", 
 	"gamemode" : "RP - BRASIL", 
 	"stream-distance" : 500.0,
