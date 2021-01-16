@@ -10,6 +10,7 @@ interface PlayerMp {
     inHospital: boolean;
 
     adminVeh: VehicleMp;
+    hasCar: boolean;
 }
 
 interface PlayerMpPool {

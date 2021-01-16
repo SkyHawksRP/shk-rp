@@ -46,27 +46,27 @@ const banCommand = (player: PlayerMp, fullText: string, target: string, ...args:
 mp.events.addCommand('ban', banCommand);
 
 // Create vehicle
-let hasCar: boolean = false;
 const createCarCommmand = (player: PlayerMp, fullText: string, vehicle: string) => {
     if(!fullText) return player.outputChatBox(`${COLOR.INFO}* /veh [vehiclename] `);
     if(player.adminLevel < USER_ADMIN) return player.outputChatBox(`!${COLOR.ERROR}* Você não tem permissão.`);
-    if(hasCar == true) player.adminVeh.destroy();
+    if(player.hasCar == true) player.adminVeh.destroy();
     player.adminVeh = mp.vehicles.new(mp.joaat(vehicle), player.position, {
         numberPlate: "ADMIN",
         color: [[2, 36, 255], [255, 255, 255]], // tribute for David Silva (SkyHawks Forever)
         dimension: player.dimension
     });
     player.putIntoVehicle(player.adminVeh, 0);
-    hasCar = true;
+    player.hasCar = true;
 }
 mp.events.addCommand('veh', createCarCommmand);
 
 const timerAdminVehicle = (player: PlayerMp) => {
+    if(player.hasCar == false) return false;
     setTimeout(function(){
         player.adminVeh.destroy();
-        hasCar = false;
+        player.hasCar = false;
     },30000);
 }
 mp.events.add('playerExitVehicle', timerAdminVehicle);
 
-// Falta colocar o veiculo para cada player
+// FALTA CONFIGURAR AS CORES DO CHAT
