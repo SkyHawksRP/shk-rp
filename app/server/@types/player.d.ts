@@ -8,6 +8,8 @@ interface PlayerMp {
     jobRankId: number | null;
     jailTime: number | null;
     inHospital: boolean;
+
+    adminVeh: VehicleMp;
 }
 
 interface PlayerMpPool {
